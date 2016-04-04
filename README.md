@@ -1,2 +1,8 @@
-# redux-router-multi-step
-A simple example of multi step form with Redux and React Router
+# Set up
+
+Just clone and cd into project then
+
+```
+$ npm i
+$ npm start
+```
