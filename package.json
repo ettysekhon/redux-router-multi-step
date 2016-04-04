@@ -8,7 +8,7 @@
     "prebuild": "npm run clean",
     "clean": "rimraf dist",
     "start": "cross-env NODE_ENV=development PORT=3001 node index --colors",
-    "serve": "cross-env NODE_ENV=production PORT=8082 node index --colors",
+    "serve": "cross-env NODE_ENV=production PORT=8083 node index --colors",
     "preserve": "npm run build",
     "lint": "eslint src",
     "e2e": "cross-env NODE_ENV=test PORT=3000 mocha './src/**/*.e2e.js' --compilers js:babel-register --recursive --require ./test.setup.js",

@@ -1,6 +1,8 @@
 import ActionTypes from './types.js';
 import { browserHistory } from 'react-router';
 
+const PORT = process.env.PORT;
+
 const routePush = (route) => {
   browserHistory.push(route);
 };
@@ -15,7 +17,8 @@ const fetchingRegistrationCharge = (text) => {
 const receiveRegistrationCharge = (registration, payload) => {
   return {
     type: ActionTypes.RECEIVE_REGISTRATION_CHARGE,
-    charge: payload.charge
+    charge: payload.charge,
+    complete: true
   };
 };
 
@@ -23,8 +26,7 @@ const invalidRegistration = (registration, validationMessage) => {
   return {
     type: ActionTypes.INVALID_REGISTRATION,
     registration,
-    validationMessage,
-    isInvalid: true
+    validationMessage
   };
 };
 
@@ -33,7 +35,7 @@ export const getRegistrationCharge = (registration) => {
     // TODO: create validator function
     if (registration.length > 3) {
       dispatch(fetchingRegistrationCharge(registration));
-      fetch('http://localhost:3001/api/charge')
+      fetch(`http://localhost:${PORT}/api/charge`)
         .then((response) => {
           return response.json();
         })

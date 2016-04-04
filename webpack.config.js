@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const postcssImport = require('postcss-import');
 const path = require('path');
 const DEV = process.env.NODE_ENV === 'development';
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8083;
 
 const config = {
   devtool: DEV ? 'source-map' : 'cheap-module-source-map',
@@ -20,8 +20,10 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      'process.env.PORT': PORT
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        PORT: JSON.stringify(PORT)
+      }
     }),
     new ExtractTextPlugin('[name].[hash].css', { allChunks: true }),
     new HtmlWebpackPlugin({
