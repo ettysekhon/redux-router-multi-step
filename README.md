@@ -4,5 +4,5 @@ Just clone and cd into project then
 
 ```
 $ npm i
-$ npm start
+$ npm run serve
 ```
